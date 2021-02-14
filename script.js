@@ -39,7 +39,9 @@ function reset() {
 
 function win() {
   accepting = false;
+  if (score > highscore) highscore = score;
   document.body.style.backgroundColor = 'green';
+  document.querySelector(`.highscore`).textContent = highscore;
   document.querySelector(`.number`).textContent = trueNumber;
   document.querySelector(`.message`).textContent = `Correct number!`;
 }
