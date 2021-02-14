@@ -3,6 +3,7 @@ let guess = 0;
 let trueNumber = 0;
 let accepting = true;
 let score = 20;
+let highscore = 0;
 
 reset();
 
@@ -16,6 +17,7 @@ function checkGuess() {
       win();
     } else {
       score--;
+      checkLoss();
       document.querySelector('.score').textContent = score;
       guess > trueNumber
         ? (document.querySelector('.message').textContent = 'Too High...')
@@ -25,14 +27,28 @@ function checkGuess() {
 }
 
 function reset() {
+  score = 20;
   accepting = true;
   trueNumber = Math.floor(Math.random() * 20 + 1);
+  document.body.style.backgroundColor = '#222';
   document.querySelector('.guess').value = '';
   document.querySelector('.score').textContent = score;
+  document.querySelector(`.number`).textContent = `?`;
   document.querySelector('.message').textContent = 'Start guessing...';
 }
 
 function win() {
   accepting = false;
-  alert('You win!');
+  document.body.style.backgroundColor = 'green';
+  document.querySelector(`.number`).textContent = trueNumber;
+  document.querySelector(`.message`).textContent = `Correct number!`;
+}
+
+function checkLoss() {
+  if (score === 0) {
+    accepting = false;
+    document.body.style.backgroundColor = 'red';
+    document.querySelector('h1').textContent = `Game Over!`;
+    document.querySelector(`.number`).textContent = `:(`;
+  }
 }
