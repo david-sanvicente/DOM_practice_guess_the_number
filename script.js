@@ -34,7 +34,8 @@ function reset() {
   document.querySelector('.guess').value = '';
   document.querySelector('.score').textContent = score;
   document.querySelector(`.number`).textContent = `?`;
-  document.querySelector('.message').textContent = 'Start guessing...';
+  document.querySelector('h1').textContent = `Guess My Number!`;
+  document.querySelector(`.message`).textContent = 'Start guessing...';
 }
 
 function win() {
